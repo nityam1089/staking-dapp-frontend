@@ -225,7 +225,7 @@
 <script>
 const SEPOLIA_CHAIN_ID = '0xaa36a7'; // 11155111
 const REWARD_TOKEN_ADDRESS = '0xA1B648BA43EAD7BC43b2036Ec4A076350F2E1e45';
-const STAKING_ADDRESS = '0x48CfEd5dc114CF4112aA21384E7cfC8516F9D248';
+const STAKING_ADDRESS = '0x45aa0062dB4017dF095621CdbCBEBf076Dc98573';
 
 const ERC20_ABI = [
   "function balanceOf(address account) view returns (uint256)",
@@ -359,7 +359,7 @@ function startTicker(){
   tickerInterval = setInterval(() => {
     // Smoothly extrapolate between polls so the number feels alive; corrected every 4s by refreshAll.
     const elapsed = (Date.now() - lastEarnedTime) / 1000;
-    const estimate = lastEarned + elapsed * 0.0000001; // gentle visual drift; corrected on next poll
+    const estimate = lastEarned + elapsed * 1.5; // visual drift matching ~RT/sec accrual; corrected on next poll
     $('rewardTicker').innerHTML = `${estimate.toFixed(6)}<span class="token">RT</span>`;
   }, 200);
 }
